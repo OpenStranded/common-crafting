@@ -1,6 +1,7 @@
 use std::collections::HashMap;
 
 use serde::{Deserialize, Serialize};
+use openstranded_common_helpers::first_string;
 
 /// A single ingredient required by a crafting recipe.
 ///
@@ -149,20 +150,6 @@ fn parse_results(fields: &HashMap<String, Vec<String>>) -> Vec<RecipeResult> {
         .get("gen")
         .map(|vals| vals.iter().map(|v| RecipeResult::from_inf_value(v)).collect())
         .unwrap_or_default()
-}
-
-// ── Field parsing helpers ──────────────────────────────────────────
-
-fn first_str<'a>(fields: &'a HashMap<String, Vec<String>>, key: &str) -> Option<&'a str> {
-    fields.get(key)?.first().map(String::as_str)
-}
-
-fn first_string(fields: &HashMap<String, Vec<String>>, key: &str) -> Option<String> {
-    first_str(fields, key).map(ToOwned::to_owned)
-}
-
-fn first_u32(fields: &HashMap<String, Vec<String>>, key: &str) -> Option<u32> {
-    first_str(fields, key)?.parse().ok()
 }
 
 impl RecipeDef {

@@ -1,6 +1,6 @@
 [package]
 name = "openstranded-common-crafting"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 rust-version = "1.85"
 license = "GPL-3.0-or-later"
@@ -15,3 +15,4 @@ exclude = ["/.gitignore", "Cargo.lock"]
 
 [dependencies]
 serde = { version = "1", features = ["derive"] }
+openstranded-common-helpers = "0.1"
